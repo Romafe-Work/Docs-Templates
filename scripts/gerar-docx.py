@@ -3,13 +3,13 @@
 Converte os templates Markdown desta pasta em documentos .docx.
 
   - Diagramas Mermaid sao renderizados como imagens PNG e embebidos no documento.
-  - Estilos, pagina A4, rodape com numeracao: assets/reference.docx
+  - Estilos, pagina A4, rodape com numeracao: recursos/referencia.docx
   - Saida: o .docx fica ao lado do .md, na mesma pasta + 00-COLETANEA-COMPLETA.docx na raiz
 
 Uso:
-    python3 scripts/build-docx.py              # tudo
-    python3 scripts/build-docx.py 02-analise   # so uma pasta ou ficheiro
-    python3 scripts/build-docx.py --sem-coletanea
+    python3 scripts/gerar-docx.py              # tudo
+    python3 scripts/gerar-docx.py 02-analise   # so uma pasta ou ficheiro
+    python3 scripts/gerar-docx.py --sem-coletanea
 
 Requisitos:
     pandoc >= 3.0        https://pandoc.org/installing.html
@@ -24,12 +24,12 @@ import os, re, shutil, struct, subprocess, sys, glob
 ROOT  = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WORK  = os.path.join(ROOT, ".build")
 DEST  = ROOT  # os .docx ficam ao lado dos .md, na mesma pasta
-REF   = os.path.join(ROOT, "assets", "reference.docx")
-CONF  = os.path.join(ROOT, "assets", "mermaid.json")
-PCONF = os.path.join(ROOT, "assets", "puppeteer.json")
-REALCE = os.path.join(ROOT, "assets", "realce.theme")  # cores do manual de UI/UX
+REF   = os.path.join(ROOT, "recursos", "referencia.docx")
+CONF  = os.path.join(ROOT, "recursos", "mermaid.json")
+PCONF = os.path.join(ROOT, "recursos", "puppeteer.json")
+REALCE = os.path.join(ROOT, "recursos", "realce.theme")  # cores do manual de UI/UX
 
-# Mancha util de uma pagina A4 com as margens definidas em reference.docx
+# Mancha util de uma pagina A4 com as margens definidas em referencia.docx
 MAX_W_CM, MAX_H_CM = 17.2, 22.0
 
 # O chrome-headless-shell usado pelo mermaid-cli liga-se a libasound.so.2 mesmo
@@ -150,7 +150,7 @@ def build_coletanea(ordem):
 
     final = os.path.join(out, "tudo.md")
     open(final, "w", encoding="utf-8").write(PAGEBREAK.join(parts))
-    dest = os.path.join(DEST, "00-COLETANEA-COMPLETA.docx")
+    dest = os.path.join(DEST, "COLETANEA-COMPLETA.docx")
     r = subprocess.run(["pandoc", final, "-o", dest, "--reference-doc", REF, "--highlight-style", REALCE,
                         "--from", PANDOC_FROM + "+raw_attribute",
                         "--toc", "--toc-depth=2", "--resource-path", out, "--dpi", "192",
@@ -168,7 +168,7 @@ def main():
         if not shutil.which(exe):
             sys.exit("ERRO: '%s' nao encontrado no PATH." % exe)
     if not os.path.exists(REF):
-        sys.exit("ERRO: assets/reference.docx em falta.")
+        sys.exit("ERRO: recursos/referencia.docx em falta.")
 
     todos = sorted(os.path.relpath(p, ROOT)
                    for p in glob.glob(os.path.join(ROOT, "**", "*.md"), recursive=True)
@@ -178,8 +178,8 @@ def main():
         sys.exit("Nada a converter para: %s" % args)
 
     # README primeiro, depois por pasta
-    ordem = ([f for f in alvos if f == "README.md"] +
-             [f for f in alvos if f != "README.md"])
+    ordem = ([f for f in alvos if f == "LEIA-ME.md"] +
+             [f for f in alvos if f != "LEIA-ME.md"])
 
     mmdc = mmdc_cmd()
     print("mermaid-cli: %s" % " ".join(mmdc))

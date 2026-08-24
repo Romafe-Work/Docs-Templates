@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modelos de Documentação de Software</title>
+<meta name="description" content="Cronologia de formação e implementação de software: os documentos pela ordem em que se escrevem, para descarregar em Word.">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+<header class="topo">
+  <div class="envelope">
+    <h1>Modelos de Documentação de Software</h1>
+    <p class="legenda">
+      Os documentos pela ordem em que se produzem — do primeiro dia à entrega e ao encerramento.
+      Cada um descarrega-se em Word, preenche-se e passa a viver no repositório do projeto.
+    </p>
+    <div class="accoes">
+      <a class="botao" href="COLETANEA-COMPLETA.docx" download>Descarregar a coletânea completa</a>
+      <a class="botao secundario" href="LEIA-ME.docx" download>Leia-me</a>
+      <button class="botao secundario" type="button" id="limpar-progresso">Limpar marcações</button>
+    </div>
+  </div>
+</header>
+
+<div class="controlos">
+  <div class="envelope">
+    <div class="linha-controlos">
+      <input type="search" id="pesquisa" placeholder="Procurar documento…" aria-label="Procurar documento">
+      <select id="perfil" aria-label="Perfil de projeto">
+        <option value="tudo">Todos os documentos</option>
+        <option value="mvp">Protótipo / MVP — o mínimo</option>
+        <option value="interna">Aplicação interna pequena</option>
+        <option value="producao">Produto em produção</option>
+      </select>
+      <select id="fase" aria-label="Filtrar por fase">
+        <option value="tudo">Todas as fases</option>
+      </select>
+      <span class="contagem" id="contagem"></span>
+    </div>
+    <div class="barra-progresso" aria-hidden="true"><div id="progresso"></div></div>
+  </div>
+</div>
+
+<main id="cronologia" class="envelope"></main>
+
+<footer>
+  <div class="envelope">
+    <h2>Como usar</h2>
+    <ol>
+      <li><b>Não uses tudo.</b> Escolhe o perfil acima e descarrega só o subconjunto adequado ao contexto.</li>
+      <li>Substitui todos os <code>{{marcadores}}</code>. Meio preenchido é pior do que ausente.</li>
+      <li>Apaga o que não se aplica — secções vazias ensinam a equipa a ignorar a documentação.</li>
+      <li>Guarda os ficheiros <b>junto do código</b>, no mesmo repositório, revistos nos mesmos pedidos de integração.</li>
+    </ol>
+    <p>
+      Escreve o documento quando a sua ausência já custou tempo a alguém.
+      Documentação escrita por via das dúvidas é a primeira a ficar desatualizada — e desatualizada
+      ensina a desconfiar de todas as outras.
+    </p>
+  </div>
+</footer>
+
+<script src="dados.js"></script>
+<script src="guiao.js"></script>
+</body>
+</html>

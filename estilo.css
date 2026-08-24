@@ -1,0 +1,209 @@
+/* Modelos de Documentação de Software — folha de estilo
+   Cores do manual de UI/UX da Romafe: o azul identifica, o laranja marca.
+   O laranja nunca é cor de texto (contraste insuficiente); só filete e fundo. */
+
+:root {
+  --tinta: #222428;
+  --tinta-secundaria: #52514e;
+  --tinta-discreta: #6b6e74;
+  --azul: #00537e;
+  --azul-claro: #e6eef3;
+  --laranja: #ef7b10;
+  --laranja-traco: #ba5c00;
+  --laranja-fundo: #fee1ce;
+  --laranja-tinta: #a2451c;
+  --realce-1: #f7f8fa;
+  --realce-2: #eceff3;
+  --filete: #bfc0c2;
+  --branco: #ffffff;
+  --raio: 6px;
+  --sombra: 0 1px 3px rgba(34, 36, 40, .08);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--tinta);
+  background: var(--branco);
+}
+
+a { color: var(--azul); }
+
+/* ---------- Cabeçalho ---------- */
+
+header.topo {
+  background: var(--realce-1);
+  border-bottom: 4px solid var(--laranja);
+  padding: 2.5rem 1.5rem 2rem;
+}
+
+.envelope { max-width: 1100px; margin: 0 auto; }
+
+header.topo h1 {
+  margin: 0 0 .4rem;
+  font-size: 2rem;
+  letter-spacing: -.01em;
+}
+
+header.topo p.legenda {
+  margin: 0 0 1.5rem;
+  color: var(--tinta-secundaria);
+  max-width: 60ch;
+}
+
+.accoes { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
+
+.botao {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .6rem 1.1rem;
+  border: 1px solid var(--azul);
+  border-radius: var(--raio);
+  background: var(--azul);
+  color: var(--branco);
+  text-decoration: none;
+  font-size: .95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.botao:hover { background: #01446a; }
+.botao.secundario { background: var(--branco); color: var(--azul); }
+.botao.secundario:hover { background: var(--azul-claro); }
+
+/* ---------- Controlos ---------- */
+
+.controlos {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--branco);
+  border-bottom: 1px solid var(--filete);
+  padding: .9rem 1.5rem;
+}
+
+.linha-controlos { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
+
+input[type="search"] {
+  flex: 1 1 240px;
+  min-width: 180px;
+  padding: .55rem .8rem;
+  border: 1px solid var(--filete);
+  border-radius: var(--raio);
+  font: inherit;
+  color: var(--tinta);
+}
+input[type="search"]:focus { outline: 2px solid var(--azul); outline-offset: 1px; }
+
+select {
+  padding: .55rem .8rem;
+  border: 1px solid var(--filete);
+  border-radius: var(--raio);
+  font: inherit;
+  background: var(--branco);
+  color: var(--tinta);
+}
+
+.contagem { color: var(--tinta-discreta); font-size: .9rem; margin-left: auto; }
+
+.barra-progresso {
+  margin-top: .7rem;
+  height: 6px;
+  background: var(--realce-2);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.barra-progresso > div { height: 100%; background: var(--laranja); width: 0; transition: width .2s; }
+
+/* ---------- Cronologia ---------- */
+
+main { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+.fase {
+  position: relative;
+  padding: 0 0 2.5rem 3.5rem;
+  border-left: 2px solid var(--filete);
+}
+.fase:last-child { border-left-color: transparent; }
+
+.marco {
+  position: absolute; left: -1.05rem; top: .1rem;
+  width: 2.1rem; height: 2.1rem;
+  border-radius: 50%;
+  background: var(--branco);
+  border: 2px solid var(--laranja-traco);
+  color: var(--tinta);
+  font-size: .8rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.fase h2 { margin: 0; font-size: 1.3rem; }
+.fase h2 .quando {
+  display: inline-block;
+  margin-left: .6rem;
+  padding: .1rem .55rem;
+  background: var(--laranja-fundo);
+  color: var(--laranja-tinta);
+  border-radius: 999px;
+  font-size: .75rem; font-weight: 600;
+  vertical-align: middle;
+}
+.fase .meta { margin: .25rem 0 1.1rem; color: var(--tinta-discreta); font-size: .88rem; }
+.fase .meta b { color: var(--tinta-secundaria); font-weight: 600; }
+
+.grelha { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: .9rem; }
+
+.cartao {
+  display: flex; flex-direction: column;
+  border: 1px solid var(--filete);
+  border-left: 3px solid var(--azul);
+  border-radius: var(--raio);
+  background: var(--branco);
+  padding: .9rem 1rem;
+  box-shadow: var(--sombra);
+}
+.cartao.feito { background: var(--realce-1); border-left-color: var(--laranja-traco); }
+.cartao h3 { margin: 0 0 .35rem; font-size: 1rem; line-height: 1.35; }
+.cartao p { margin: 0 0 .9rem; font-size: .85rem; color: var(--tinta-secundaria); flex: 1; }
+
+.rodape-cartao { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
+
+.descarregar {
+  font-size: .85rem; font-weight: 600;
+  color: var(--azul); text-decoration: none;
+  border: 1px solid var(--filete);
+  border-radius: var(--raio);
+  padding: .35rem .7rem;
+  background: var(--realce-1);
+}
+.descarregar:hover { background: var(--azul-claro); border-color: var(--azul); }
+
+.marcar { display: flex; align-items: center; gap: .35rem; font-size: .8rem; color: var(--tinta-discreta); cursor: pointer; user-select: none; }
+.marcar input { accent-color: var(--laranja-traco); width: 1rem; height: 1rem; cursor: pointer; }
+
+.vazio { color: var(--tinta-discreta); font-style: italic; padding: 2rem 0; }
+
+/* ---------- Rodapé ---------- */
+
+footer {
+  border-top: 1px solid var(--filete);
+  background: var(--realce-1);
+  padding: 2rem 1.5rem 3rem;
+  color: var(--tinta-secundaria);
+  font-size: .9rem;
+}
+footer h2 { font-size: 1rem; margin: 0 0 .6rem; color: var(--tinta); }
+footer ol { margin: 0 0 1.2rem; padding-left: 1.2rem; }
+footer li { margin-bottom: .3rem; }
+footer code { background: var(--realce-2); padding: .1rem .35rem; border-radius: 3px; font-size: .85em; }
+
+@media (max-width: 640px) {
+  header.topo h1 { font-size: 1.5rem; }
+  .fase { padding-left: 2.4rem; }
+  .contagem { margin-left: 0; width: 100%; }
+}
+
+@media print {
+  .controlos, .accoes, .marcar { display: none; }
+  .fase { break-inside: avoid; }
+}
