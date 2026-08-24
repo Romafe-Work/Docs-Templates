@@ -9,7 +9,8 @@ const PERFIS = {
     "02-design/02-esbocos-e-prototipo",
     "03-arquitetura/02-modelo-decisao-arquitetura",
     "05-qualidade/04-criterios-de-conclusao",
-    "04-desenvolvimento/01-preparacao-do-ambiente"
+    "04-desenvolvimento/01-preparacao-do-ambiente",
+    "04-desenvolvimento/08-ficheiros-de-repositorio"
   ],
   interna: [
     "01-gestao-projeto/01-plano-projeto",
@@ -27,7 +28,10 @@ const PERFIS = {
     "05-qualidade/01-plano-testes",
     "06-operacao/02-manual-de-operacao",
     "08-utilizador/02-manual-utilizador",
-    "08-utilizador/04-guia-administracao"
+    "08-utilizador/04-guia-administracao",
+    "04-desenvolvimento/04-integracao-e-entrega-continua",
+    "04-desenvolvimento/06-integracao-de-novos-elementos",
+    "05-qualidade/07-dados-de-teste-e-anonimizacao"
   ],
   producao: [
     "00-produto/03-requerimentos-do-produto",
@@ -61,7 +65,15 @@ const PERFIS = {
     "07-governanca/04-licencas-e-terceiros",
     "08-utilizador/03-registo-de-alteracoes",
     "08-utilizador/05-perguntas-frequentes",
-    "08-utilizador/06-plano-formacao-adesao"
+    "08-utilizador/06-plano-formacao-adesao",
+    "00-produto/05-plano-de-instrumentacao",
+    "04-desenvolvimento/05-gestao-divida-tecnica",
+    "04-desenvolvimento/07-uso-de-ia-no-desenvolvimento",
+    "06-operacao/09-gestao-de-feature-flags",
+    "06-operacao/10-custos-de-infraestrutura",
+    "06-operacao/11-modelo-de-suporte",
+    "07-governanca/07-matriz-de-acessos-e-permissoes",
+    "07-governanca/08-politica-privacidade-e-termos"
   ]
 };
 // Os perfis são cumulativos: uma aplicação interna inclui o mínimo do protótipo.

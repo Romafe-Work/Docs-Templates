@@ -25,6 +25,11 @@ const FASES = [
     "titulo": "Plano de Evolução",
     "desc": "Agora/A seguir/Mais tarde, Gantt, marcos",
     "docx": "00-produto/04-plano-de-evolucao.docx"
+   },
+   {
+    "titulo": "Plano de Instrumentação e Analítica",
+    "desc": "Que eventos o produto emite, nomes, consentimento, qualidade dos dados",
+    "docx": "00-produto/05-plano-de-instrumentacao.docx"
    }
   ]
  },
@@ -196,6 +201,11 @@ const FASES = [
     "titulo": "Conteúdo e Microtextos",
     "desc": "Tom de voz, catálogo de mensagens, terminologia, idiomas",
     "docx": "02-design/05-conteudo-e-microtextos.docx"
+   },
+   {
+    "titulo": "Internacionalização e Localização",
+    "desc": "O que decidir cedo, chaves e plurais, formatos por região, verificação",
+    "docx": "02-design/06-internacionalizacao.docx"
    }
   ]
  },
@@ -253,7 +263,7 @@ const FASES = [
    },
    {
     "titulo": "ADR-0001 — Usar monólito modular em vez de microsserviços",
-    "desc": "Exemplo preenchido de registo de decisão de arquitetura (ADR): monólito modular em vez de microsserviços.",
+    "desc": "Exemplo preenchido de registo de decisão de arquitetura: monólito modular em vez de microsserviços.",
     "docx": "03-arquitetura/decisoes/0001-exemplo.docx"
    }
   ]
@@ -279,6 +289,31 @@ const FASES = [
     "titulo": "Padrões de Código",
     "desc": "Nomenclatura, camadas, erros, segurança, logging",
     "docx": "04-desenvolvimento/03-padroes-codigo.docx"
+   },
+   {
+    "titulo": "Integração e Entrega Contínua (CI/CD)",
+    "desc": "O que corre em cada PR, verificações obrigatórias, testes intermitentes",
+    "docx": "04-desenvolvimento/04-integracao-e-entrega-continua.docx"
+   },
+   {
+    "titulo": "Gestão de Dívida Técnica",
+    "desc": "Registo com juro e vencimento, orçamento por ciclo, sinais",
+    "docx": "04-desenvolvimento/05-gestao-divida-tecnica.docx"
+   },
+   {
+    "titulo": "Integração de Novos Elementos na Equipa",
+    "desc": "Primeiro dia, ordem de leitura, primeira tarefa, conversa dos 30 dias",
+    "docx": "04-desenvolvimento/06-integracao-de-novos-elementos.docx"
+   },
+   {
+    "titulo": "Uso de IA no Desenvolvimento",
+    "desc": "O que nunca se cola, revisão obrigatória, licenças, AGENTS.md",
+    "docx": "04-desenvolvimento/07-uso-de-ia-no-desenvolvimento.docx"
+   },
+   {
+    "titulo": "Ficheiros de Repositório",
+    "desc": ".editorconfig, Makefile, modelos de PR e de bug, CODEOWNERS, CI",
+    "docx": "04-desenvolvimento/08-ficheiros-de-repositorio.docx"
    }
   ]
  },
@@ -318,6 +353,11 @@ const FASES = [
     "titulo": "Relatório de Testes",
     "desc": "Recomendação, o que <b>não</b> foi testado, defeitos, riscos residuais",
     "docx": "05-qualidade/06-relatorio-testes.docx"
+   },
+   {
+    "titulo": "Dados de Teste e Anonimização",
+    "desc": "Dados gerados, técnicas de anonimização, o que sobra sempre",
+    "docx": "05-qualidade/07-dados-de-teste-e-anonimizacao.docx"
    }
   ]
  },
@@ -367,6 +407,26 @@ const FASES = [
     "titulo": "Gestão de Ambientes e Configuração",
     "desc": "Inventário de variáveis, segredos, paridade, armadilhas conhecidas",
     "docx": "06-operacao/08-gestao-ambientes-configuracao.docx"
+   },
+   {
+    "titulo": "Gestão de Feature Flags",
+    "desc": "Tipos, inventário, ciclo de vida, remoção, uso em incidente",
+    "docx": "06-operacao/09-gestao-de-feature-flags.docx"
+   },
+   {
+    "titulo": "Custos de Infraestrutura",
+    "desc": "Custo por componente, projeção, degraus, alertas, onde se poupa",
+    "docx": "06-operacao/10-custos-de-infraestrutura.docx"
+   },
+   {
+    "titulo": "Modelo de Suporte",
+    "desc": "N1/N2/N3, caminho do pedido, gravidades, base de conhecimento",
+    "docx": "06-operacao/11-modelo-de-suporte.docx"
+   },
+   {
+    "titulo": "Publicação nas Lojas de Aplicações",
+    "desc": "Conta e chaves, ficha da loja, lançamento faseado, motivos de recusa",
+    "docx": "06-operacao/12-publicacao-nas-lojas.docx"
    }
   ]
  },
@@ -406,6 +466,16 @@ const FASES = [
     "titulo": "Plano de Auditoria e Conformidade",
     "desc": "Registo de auditoria, calendário, revisão de acessos",
     "docx": "07-governanca/06-plano-auditoria.docx"
+   },
+   {
+    "titulo": "Matriz de Acessos e Permissões",
+    "desc": "Papéis, matriz por recurso, regras de contexto, ciclo de vida",
+    "docx": "07-governanca/07-matriz-de-acessos-e-permissoes.docx"
+   },
+   {
+    "titulo": "Política de Privacidade e Termos de Utilização",
+    "desc": "Textos públicos para o utilizador, exigidos pelas lojas",
+    "docx": "07-governanca/08-politica-privacidade-e-termos.docx"
    }
   ]
  },
