@@ -1,0 +1,144 @@
+// Modelo Typst da Romafe, para o pandoc gerar PDF a partir de Markdown.
+//
+//   pandoc DOC.md -o DOC.pdf --pdf-engine=typst \
+//     --template recursos/romafe.typst -M title="..."
+//
+// Cores do manual de UI/UX da Romafe: o azul identifica, o laranja marca.
+// O laranja NUNCA e cor de texto (contraste insuficiente) — so filete e fundo.
+// Par com recursos/referencia.docx, que faz o mesmo para o Word.
+
+#let azul = rgb("#00537e")
+#let azulClaro = rgb("#e6eef3")
+#let laranja = rgb("#ef7b10")
+#let laranjaFundo = rgb("#fee1ce")
+#let tinta = rgb("#222428")
+#let tinta2 = rgb("#52514e")
+#let tinta3 = rgb("#6b6e74")
+#let filete = rgb("#bfc0c2")
+#let realce1 = rgb("#f7f8fa")
+
+$if(highlighting-definitions)$
+$highlighting-definitions$
+$endif$
+
+#set document(
+$if(title)$
+  title: "$title$",
+$endif$
+  author: "Romafe SA",
+)
+
+#set page(
+  paper: "a4",
+  margin: (top: 2.1cm, bottom: 1.9cm, x: 2.1cm),
+  // Filete laranja no topo de cada pagina: a marca, sem texto.
+  header: line(length: 100%, stroke: 2.5pt + laranja),
+  header-ascent: 45%,
+  footer: context [
+    #set text(size: 8pt, fill: tinta3, font: "Lato")
+    #line(length: 100%, stroke: 0.5pt + filete)
+    #v(-4pt)
+    #grid(
+      columns: (1fr, auto),
+      align: (left, right),
+      [$if(title)$$title$$else$Romafe SA$endif$],
+      [#counter(page).display("1 / 1", both: true)],
+    )
+  ],
+)
+
+#set text(font: ("Lato",), size: 10pt, fill: tinta, lang: "pt", region: "PT")
+#set par(justify: true, leading: 0.68em, spacing: 1.05em)
+
+// ---------- Titulos ----------
+// Nivel 1: azul, com filete laranja por baixo. E o que identifica a seccao.
+#show heading: set text(font: "Jost", fill: azul)
+#show heading.where(level: 1): it => {
+  v(1.1em, weak: true)
+  block(width: 100%, breakable: false)[
+    #text(size: 16pt, weight: 700, it.body)
+    #v(4pt, weak: true)
+    #line(length: 100%, stroke: 2pt + laranja)
+  ]
+  v(0.55em, weak: true)
+}
+#show heading.where(level: 2): it => {
+  v(1em, weak: true)
+  block(width: 100%, breakable: false)[
+    #text(size: 12.5pt, weight: 700, it.body)
+    #v(3pt, weak: true)
+    #line(length: 100%, stroke: 0.7pt + filete)
+  ]
+  v(0.4em, weak: true)
+}
+#show heading.where(level: 3): it => {
+  v(0.85em, weak: true)
+  block(text(size: 10.8pt, weight: 700, fill: tinta, it.body))
+  v(4pt)
+}
+
+// ---------- Tabelas ----------
+#set table(
+  inset: (x: 7pt, y: 6pt),
+  stroke: (x, y) => if y == 0 { (bottom: 1.2pt + azul) } else { (bottom: 0.4pt + filete) },
+)
+#show table.cell: set align(left + top)
+#show table.cell.where(y: 0): set text(font: "Jost", weight: 700, fill: azul, size: 9pt)
+#show table: set text(size: 9pt)
+#show table: set par(justify: false, leading: 0.6em)
+#show figure: set align(left)
+#show figure: set block(breakable: true)
+
+// ---------- Citacoes: a caixa de aviso ----------
+// Fundo azul claro, traco laranja a marcar. E onde vao os avisos do documento.
+#show quote.where(block: true): it => block(
+  width: 100%,
+  fill: azulClaro,
+  stroke: (left: 3pt + laranja),
+  inset: (x: 11pt, y: 9pt),
+  radius: (right: 3pt),
+  breakable: true,
+)[
+  #set text(size: 9.4pt)
+  #set par(justify: true)
+  #it.body
+]
+
+// ---------- Ligacoes, codigo, separador ----------
+// Azul e sublinhado: uma ligação tem de parecer uma ligação, e a cor sozinha
+// não chega a quem não distingue bem as cores.
+#show link: it => underline(offset: 2pt, stroke: 0.5pt + azul, text(fill: azul, it))
+#show raw: set text(font: "DejaVu Sans Mono", size: 8.6pt)
+#show raw.where(block: false): box.with(fill: realce1, inset: (x: 2.5pt), outset: (y: 3pt), radius: 2pt)
+#show raw.where(block: true): block.with(fill: realce1, inset: 9pt, radius: 3pt, width: 100%)
+#set raw(theme: none)
+
+#let horizontalrule = align(center, block(width: 100%, above: 1.4em, below: 1.4em,
+  line(length: 40%, stroke: 0.8pt + filete)))
+#let divider() = horizontalrule
+
+#set list(indent: 0.6em, spacing: 0.85em)
+#set enum(indent: 0.6em, spacing: 0.85em)
+#set terms(hanging-indent: 1.5em)
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+$if(toc)$
+#{
+  show outline.entry.where(level: 1): set text(font: "Jost", weight: 700, fill: azul)
+  outline(title: [Índice], depth: $toc-depth$)
+}
+#pagebreak()
+$endif$
+
+$for(include-before)$
+$include-before$
+$endfor$
+
+$body$
+
+$for(include-after)$
+$include-after$
+$endfor$
