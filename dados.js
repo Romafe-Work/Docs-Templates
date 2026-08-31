@@ -140,7 +140,7 @@ const FASES = [
   "documentos": [
    {
     "titulo": "Casos de Uso",
-    "desc": "Atores, diagrama, especificação completa com fluxos alternativos e exceções",
+    "desc": "Atores, diagrama, <b>ficha completa por caso de uso</b> — fluxos alternativos e de exceção, extensões, dados, permissões, critérios de aceitação — formulário em branco e lista de verificação",
     "docx": "02-analise/01-casos-de-uso.docx"
    },
    {
